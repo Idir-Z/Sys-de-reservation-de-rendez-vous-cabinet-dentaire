@@ -1,0 +1,67 @@
+Authentication and Authorization:
+
+Endpoints for user registration (POST /register) and login (POST /login).
+Access control mechanisms to ensure that only authenticated and authorized users can access certain endpoints.
+Clinics:
+
+Retrieve all clinics: GET /clinics
+Retrieve clinic by ID: GET /clinics/{id}
+Create a new clinic: POST /clinics
+Update an existing clinic: PUT /clinics/{id}
+Delete a clinic: DELETE /clinics/{id}
+Clients:
+
+Retrieve all clients: GET /clients
+Retrieve client by ID: GET /clients/{id}
+Create a new client: POST /clients
+Update an existing client: PUT /clients/{id}
+Delete a client: DELETE /clients/{id}
+Reservation Types:
+
+Retrieve all reservation types: GET /reservation-types
+Retrieve reservation type by ID: GET /reservation-types/{id}
+Create a new reservation type: POST /reservation-types
+Update an existing reservation type: PUT /reservation-types/{id}
+Delete a reservation type: DELETE /reservation-types/{id}
+Reviews:
+
+Retrieve all reviews: GET /reviews
+Retrieve review by ID: GET /reviews/{id}
+Create a new review: POST /reviews
+Update an existing review: PUT /reviews/{id}
+Delete a review: DELETE /reviews/{id}
+Services:
+
+Retrieve all services: GET /services
+Retrieve service by ID: GET /services/{id}
+Create a new service: POST /services
+Update an existing service: PUT /services/{id}
+Delete a service: DELETE /services/{id}
+Appointments:
+
+Retrieve all appointments: GET /appointments
+Retrieve appointment by ID: GET /appointments/{id}
+Create a new appointment: POST /appointments
+Update an existing appointment: PUT /appointments/{id}
+Delete an appointment: DELETE /appointments/{id}
+Payments:
+
+Retrieve all payments: GET /payments
+Retrieve payment by ID: GET /payments/{id}
+Create a new payment: POST /payments
+Update an existing payment: PUT /payments/{id}
+Delete a payment: DELETE /payments/{id}
+Offered Services:
+
+Retrieve all offered services: GET /offered-services
+Retrieve offered services by clinic ID: GET /offered-services/{clinic_id}
+Add a new offered service: POST /offered-services
+Update an existing offered service: PUT /offered-services/{id}
+Delete an offered service: DELETE /offered-services/{id}
+Practice Features Offered:
+
+Retrieve all offered practice features: GET /offered-features
+Retrieve offered practice features by clinic ID: GET /offered-features/{clinic_id}
+Add a new offered practice feature: POST /offered-features
+Update an existing offered practice feature: PUT /offered-features/{id}
+Delete an offered practice feature: DELETE /offered-features/{id}

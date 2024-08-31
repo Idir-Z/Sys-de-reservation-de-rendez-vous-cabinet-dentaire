@@ -1,0 +1,112 @@
+CREATE TABLE service(
+   id_service int AUTO_INCREMENT,
+   libelle VARCHAR(50),
+   PRIMARY KEY(id_service)
+);
+
+CREATE TABLE account(
+   user_id int AUTO_INCREMENT,
+   password VARCHAR(100),
+   mail VARCHAR(50),
+   user_name VARCHAR(50),
+   user_type ENUM('user','clinic'),
+   date_ajout DATETIME,
+   PRIMARY KEY(user_id)
+);
+
+CREATE TABLE numer_tel(
+   id_numero int AUTO_INCREMENT,
+   numer BIGINT,
+   PRIMARY KEY(id_numero)
+);
+
+CREATE TABLE clinique(
+   id_clinique int AUTO_INCREMENT,
+   nom VARCHAR(50),
+   address VARCHAR(50),
+   id_compte_banquaire VARCHAR(50) NOT NULL,
+   about VARCHAR(500),
+   user_id int NOT NULL,
+   PRIMARY KEY(id_clinique),
+   FOREIGN KEY(user_id) REFERENCES account(user_id)
+);
+
+CREATE TABLE client(
+   id_client int AUTO_INCREMENT,
+   nom VARCHAR(50),
+   prenom VARCHAR(50),
+   date_naissance DATE,
+   user_id int NOT NULL,
+   PRIMARY KEY(id_client),
+   FOREIGN KEY(user_id) REFERENCES account(user_id)
+);
+
+CREATE TABLE rendez_vous(
+   id_rendez_vous int AUTO_INCREMENT,
+   date_debut DATE,
+   pris BOOLEAN,
+   date_fin DATE,
+   paye BOOLEAN,
+   id_clinique int NOT NULL,
+   id_service int NOT NULL,
+   id_client int NOT NULL,
+   PRIMARY KEY(id_rendez_vous),
+   FOREIGN KEY(id_clinique) REFERENCES clinique(id_clinique),
+   FOREIGN KEY(id_service) REFERENCES service(id_service),
+   FOREIGN KEY(id_client) REFERENCES client(id_client)
+);
+
+CREATE TABLE review(
+   id_review VARCHAR(50),
+   rating INT CHECK (rating >= 1 AND rating <= 5),
+   comment VARCHAR(200),
+   review_date DATETIME,
+   id_clinique int NOT NULL,
+   id_client int NOT NULL,
+   PRIMARY KEY(id_review),
+   FOREIGN KEY(id_clinique) REFERENCES clinique(id_clinique),
+   FOREIGN KEY(id_client) REFERENCES client(id_client)
+);
+
+CREATE TABLE payement(
+   id_payement BIGINT,
+   somme DOUBLE,
+   numero_carte VARCHAR(50) NOT NULL,
+   payé_par_client BOOLEAN,
+   payé_pour_clinic BOOLEAN,
+   id_rendez_vous BIGINT NOT NULL,
+   PRIMARY KEY(id_payement),
+   FOREIGN KEY(id_rendez_vous) REFERENCES rendez_vous(id_rendez_vous)
+);
+
+CREATE TABLE photo(
+   id_photo BIGINT,
+   contenu BLOB,
+   id_clinique int NOT NULL,
+   PRIMARY KEY(id_photo),
+   FOREIGN KEY(id_clinique) REFERENCES clinique(id_clinique)
+);
+
+CREATE TABLE offre_service(
+   id_clinique int,
+   id_service int,
+   PRIMARY KEY(id_clinique, id_service),
+   FOREIGN KEY(id_clinique) REFERENCES clinique(id_clinique),
+   FOREIGN KEY(id_service) REFERENCES service(id_service)
+);
+
+CREATE TABLE tel_client(
+   id_client int,
+   id_numero int,
+   PRIMARY KEY(id_client, id_numero),
+   FOREIGN KEY(id_client) REFERENCES client(id_client),
+   FOREIGN KEY(id_numero) REFERENCES numer_tel(id_numero)
+);
+
+CREATE TABLE tel_clinic(
+   id_clinique int,
+   id_numero int,
+   PRIMARY KEY(id_clinique, id_numero),
+   FOREIGN KEY(id_clinique) REFERENCES clinique(id_clinique),
+   FOREIGN KEY(id_numero) REFERENCES numer_tel(id_numero)
+);

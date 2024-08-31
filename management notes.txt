@@ -1,0 +1,4 @@
+
+developement methodology : iterative agile
+  - reasons : the dental clinic appointment reservation and management has a set of too-abstract and general needs and requirements that are all included in the requirements document, these needs are generic and global and can be applied to any reservation system, although they are valid as the are this project aims for a narrow scope and is a somwhat specialized in it's field in order to maximize the usabiliy of the product, that is why we chose to go with an iterative developement/test-and-feedback cycle, the later will be decided later, some candidats include kanban and scrum.
+
